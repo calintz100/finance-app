@@ -10,9 +10,3 @@ jobs:
     steps:
       - name: 코드 가져오기
         uses: actions/checkout@v4
-
-      - name: PHP 버전 확인
-        run: php -v
-
-      - name: Composer 설치
-        run: composer install
