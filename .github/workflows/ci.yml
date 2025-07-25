@@ -5,14 +5,19 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: self-hosted   # 반드시 self-hosted
+  deploy:
+    runs-on: self-hosted
+
     steps:
-      - name: 코드 가져오기
-        uses: actions/checkout@v4
+      - name: 프로젝트 폴더로 이동해서 최신 코드 반영
+        run: |
+          cd /volume1/projects/finance-app   # NAS에 실제 코드가 있는 폴더 경로
+          git fetch --all
+          git reset --hard origin/master
+          git clean -fd
 
-      - name: PHP 버전 확인
-        run: php -v
-
-      - name: Composer 설치
-        run: composer install
+      - name: 의존성 업데이트 (선택)
+        run: |
+          cd /volume1/projects/finance-app
+          composer install --no-interaction --prefer-dist --optimize-autoloader
+          php artisan migrate --force
