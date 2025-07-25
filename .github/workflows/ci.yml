@@ -5,10 +5,8 @@ on:
     branches: [ master ]
 
 jobs:
-<<<<<<< HEAD
   deploy:
     runs-on: self-hosted
-
     steps:
       - name: 프로젝트 폴더로 이동해서 최신 코드 반영
         run: |
@@ -22,10 +20,3 @@ jobs:
           cd /volume1/projects/finance-app
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan migrate --force
-=======
-  build:
-    runs-on: self-hosted   # 반드시 self-hosted
-    steps:
-      - name: 코드 가져오기
-        uses: actions/checkout@v4
->>>>>>> d39b37dd383d96eccc6fbac9772cb71e4993dbcf
