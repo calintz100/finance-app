@@ -17,6 +17,6 @@ jobs:
 
       - name: 의존성 업데이트 (선택)
         run: |
-          cd /volume1/docker/finance-app
+          cd /volume1/docker/finance-app/app
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan migrate --force
