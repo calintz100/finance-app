@@ -15,8 +15,9 @@ jobs:
           git reset --hard origin/master
           git clean -fd
 
-      - name: 의존성 업데이트 (선택)
-        run: |
-          cd /volume1/docker/finance-app/src
-          composer install --no-interaction --prefer-dist --optimize-autoloader
-          php artisan migrate --force
+      # 도커 php 버전 문제로 실행하지 않음
+      # - name: 의존성 업데이트 (선택)
+      #   run: |
+      #     cd /volume1/docker/finance-app/src
+      #     composer install --no-interaction --prefer-dist --optimize-autoloader
+      #     php artisan migrate --force
